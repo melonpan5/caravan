@@ -10,7 +10,17 @@ class BlogsController < ApplicationController
   	@blogs = Blog.all
   end
 
+ def edit
+ 	@blog = Blog.find(params[:id])
 
+ def update
+    blog = Blog.find(params[:id])
+    blog.update(blog_params)
+    redirect_to blogs_path(blog)
+    
+ end
+
+ end
   def new
   	@blog = Blog.new
 
@@ -20,7 +30,7 @@ class BlogsController < ApplicationController
   	blog = Blog.new(blog_params)
   	blog.save
     redirect_to blogs_path(blog.id)
-    
+
   end
 
   private 

@@ -5,9 +5,25 @@ class BlogsController < ApplicationController
   def show
   end
 
-  def new
-  end
-
   def edit
   end
+
+
+  def new
+  	@blog = Blog.new
+
+  end
+
+  def create
+  	blog = Blog.new(blog_params)
+    redirect_to blogs_path
+  end
+
+ 
+  private 
+  
+  def blog_params
+  params.require(:blog).permit(:title, :category, :body)
+
+end
 end
